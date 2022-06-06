@@ -3,5 +3,9 @@ from . import views
 
 urlpatterns = [
     path("", views.homepage, name="home"),
-    path("updateplants/<name>", views.updateplants, name="updateplants")
+    path(r'^log$', views.log, name="log"),
+    path(r'^addplantpage$', views.addplantpage, name="addplantpage"),
+    path("updateplants/<name>", views.updateplants, name="updateplants"),
+    path('addplant/', views.addplant, name='addplant'),
+    path('delete/<int:plant_id>', views.delete, name='delete'),
 ]

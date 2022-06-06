@@ -1,18 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
-    <title>Water Them Plants, Girl!</title>
+    <title>Plant Water Log</title>
 </head>
 <body>
     <nav>
         <div class="top">
-            <h5><a href="{% url 'home' %}">Check That Water!</a></h5>
+            <h5><a href="{% url 'home' %}">Watering Log!</a></h5>
         </div>
         <div class="link_div">
             <p class="link"><a href="{% url 'home' %}">Home</a></p>
@@ -21,15 +20,19 @@
         </div>
     </nav>
     
-    
-    <div class="plant_box">
-        {% for p in Plants %}
-        <form action="updateplants/{{p}}" method="post">
-        {% csrf_token %}
-        <button type="submit">{{ p }}</button>
-        </form>
+    <table class="plant_table">
+        <tr>
+            <th>Delete</th>
+            <th>Name</th>
+            <th>Last Watered</th>
+            <th>Last Fertilized</th>
+        </tr>
+        {% for x in mymembers %}
+          <tr>
+            <td><a href="delete/{{ x.plant_id }}">X</a></td>
+            <td>{{ x.name }}</td>
+            <td>{{ x.water_date }}</td>
+            <td>{{ x.fert_date }}</td>
+          </tr>
         {% endfor %}
-    </div>
-    
-</body>
-</html>
+      </table>

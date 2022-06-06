@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>Water Them Plants, Girl!</title>
+</head>
+<body>
+    <nav>
+        <div class="top">
+            <h5><a href="{% url 'home' %}">What!? You got ANOTHER plant?!</a></h5>
+        </div>
+        <div class="link_div">
+            <p class="link"><a href="{% url 'home' %}">Home</a></p>
+            <p class="link"><a href="{% url 'log' %}">Plant Log</a></p>
+            <p class="link"><a href="{% url 'addplantpage' %}">Add Plant</a></p>
+        </div>
+    </nav>
+
+    <div class="update_form">
+        <form action="addrecord/" method="post">
+            {% csrf_token %}
+            Plant Name:<br>
+            <input name="Name">
+            <br><br>
+            Watering Frequency (in days)<br>
+            <input name="WaterDays">
+            <br><br>
+            Fertilizing Frequency (in days):<br>
+            <input name="FertDays">
+            <br><br>
+            Last date Watered (YYYY-MM-DD):<br>
+            <input name="WaterDate">
+            <br><br>
+            Last date Fertilized (YYYY-MM-DD):<br>
+            <input name="FertDate">
+            <br><br>
+            <input type="submit" value="Submit">
+            </form>
+      </div>
+
+
+</body>
+</html>
