@@ -47,6 +47,12 @@ def updateplants(request, name):
     Plant.save()
     return HttpResponseRedirect(reverse(homepage))
 
+def fertplants(request, name):
+    Plant = Plants.objects.get(name=name)
+    Plant.fert_date = datetime.date.today()
+    Plant.save()
+    return HttpResponseRedirect(reverse(homepage))
+
 def addplantpage(request):
     template = loader.get_template('addplant.html')
     context = {}

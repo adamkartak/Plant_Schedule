@@ -24,10 +24,22 @@
     
     <div class="plant_box">
         {% for p in Plants %}
-        <form action="updateplants/{{p}}" method="post">
-        {% csrf_token %}
-        <button type="submit">{{ p }}</button>
-        </form>
+        <div class="box">
+            <div class="box_header">
+                <h2>{{ p }}</h2>
+            </div>
+            <div class="box_main">
+                <form action="updateplants/{{p}}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Water</button>
+                </form>
+                <form action="fertplants/{{p}}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Fertilize</button>
+                </form>
+            </div>
+        </div>
+        
         {% endfor %}
     </div>
     
